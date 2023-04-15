@@ -41,12 +41,15 @@ class Montycarlo():
         return anode.get_score()
     
     def makechilds(self):
+        if self.myNode.is_terminal():
+            return False
         allfollowNodes=self.myNode.make_children()
         for node in allfollowNodes:
-            self.childs.append(Montycarlo(self.nplayers,self,node))
+            self.childs.append(Montycarlo(self.nplayers,node))
+        return True
     
     @staticmethod
-    def ucb(self,n,v):
+    def ucb(n,v):
         if n==0:
             return inf
         return v/n+2*sqrt(log(Montycarlo.N)/n)
@@ -68,13 +71,19 @@ class Montycarlo():
                 newv=self.rollout()
             else:
                 if self.makechilds():
-                    newv=self.childs[0].simulate()           
+                    newv=self.childs[0].simulate()
+                else:
+                    newv=self.rollout()        
         else:
             bestc=self.getBestchild()
             newv=bestc.simulate()
         
         self.addv(newv)
         return newv
+    
+    def rootsimulate(self):
+        Montycarlo.N+=1
+        self.simulate()
         
 
     
