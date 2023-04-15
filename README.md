@@ -8,7 +8,7 @@ currently it fails at the follwing games:
 uses the python-chess lib works very badly
 
 ## to100
-very simple completly solved game for testing
+very simple completly solved game for testing (also doesnt really work)
 
 ## tictactoe
 sort of works but does not play perfect
