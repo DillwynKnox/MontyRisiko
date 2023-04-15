@@ -65,6 +65,8 @@ class Montycarlo():
         self.v=list(map(lambda x,y:x+y,self.v,newv))
     
     def score(self,node):
+        if node.n==0:
+            return -inf
         return node.v[self.player]/node.n
     
     def getEndChild(self):
