@@ -1,10 +1,12 @@
 import json
 import pandas as pd
 
-def get_Countries():
-    with open('gameInfo/countries.json') as gamefile:
+def createGame(countrypath='gameInfo/countries.json'):
+    with open(countrypath) as gamefile:
         countries=json.load(gamefile)
-    return countries
+    Game={}
+    Game["countries"]=countries
+    return Game
 
 def possible_Attacks(sit:dict,game:dict):
     cou_df : pd.DataFrame=sit["countries"]
@@ -20,5 +22,5 @@ def possible_Attacks(sit:dict,game:dict):
     for _,area in possibleAreas.iterrows():
         for nei in game['countries'][area['name']]:
             if nei not in my_Areas['name'].tolist():
-                ac.append(area['name'],area)
+                ac.append((area['name'],nei))
     return ac

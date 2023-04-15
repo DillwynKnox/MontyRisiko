@@ -1,0 +1,11 @@
+{
+    "Schleswig":["NRW"],
+    "NRW":["Schleswig","Preussen","Thueringen","Saarland"],
+    "BW":["Saarland","Thueringen","Bayern"],
+    "Saarland":["BW","NRW"],
+    "Thueringen":["NRW","Preussen","BW","Bayern","Sachsen"],
+    "Sachsen":["Bayern","Thueringen","Preussen"],
+    "Bayern":["Sachsen","Thueringen","BW"],
+    "Preussen":["NRW","Thueringen","Sachsen"]
+
+}
