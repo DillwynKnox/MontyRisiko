@@ -4,7 +4,7 @@ from math import sqrt,log,inf
 class Node(ABC):
 
     @abstractmethod
-    def make_children(self):
+    def make_children(self) -> list:
         pass
 
     @abstractmethod
@@ -12,7 +12,7 @@ class Node(ABC):
         pass
 
     @abstractmethod
-    def get_player(self):
+    def get_player(self) -> int:
         pass
 
     @abstractmethod
@@ -20,7 +20,7 @@ class Node(ABC):
         pass
     
     @abstractmethod
-    def get_score(self):
+    def get_score(self) -> list:
         pass
 
 
@@ -63,6 +63,12 @@ class Montycarlo():
 
     def addv(self,newv):
         self.v=list(map(lambda x,y:x+y,self.v,newv))
+    
+    def score(self,node):
+        return node.v[self.player]/node.n
+    
+    def getEndChild(self):
+        return max(self.childs,key=self.score)
 
     def simulate(self):
         self.n+=1
