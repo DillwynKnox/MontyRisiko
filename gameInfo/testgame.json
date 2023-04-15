@@ -1,0 +1,37 @@
+{
+    "countries":{
+        "Schleswig":["NRW"],
+        "NRW":["Schleswig","Preussen","Thueringen","Saarland"],
+        "BW":["Saarland","Thueringen","Bayern"],
+        "Saarland":["BW","NRW"],
+        "Thueringen":["NRW","Preussen","BW","Bayern","Sachsen"],
+        "Sachsen":["Bayern","Thueringen","Preussen"],
+        "Bayern":["Sachsen","Thueringen","BW"],
+        "Preussen":["NRW","Thueringen","Sachsen"]
+
+    },
+    "continents":{
+        "Ost":{
+            "members":["Preussen","Sachsen"],
+            "gain":2
+        },
+        "West":{
+            "members":["Schleswig","NRW","Saarland"],
+            "gain":3
+        },
+        "Sud":{
+            "members":["BW","Bayern"],
+            "gain":2
+        }
+    },
+    "players":{
+        "red":0,
+        "yellow":1,
+        "blue":2
+
+    },
+    "tgain":[0,0,1,1,2,2,3,3,4,4],
+    "basegain":2,
+    "startTroops":8,
+    "distMode":"totalRandom"
+}
