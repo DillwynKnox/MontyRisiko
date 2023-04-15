@@ -72,7 +72,19 @@ def getBoard(Board):
     monty=Montycarlo(2,sit)
     for _ in range(100):
         monty.simulate()
-    return monty.getEndChild().myNode.board
+    b=monty.getEndChild().myNode.board
+    print(b)
+    print(b.peek())
+    return b
+
+def game():
+    bd=chess.Board()
+    while True:
+        bd=getBoard(bd)
+        print("opponent:")
+        move=input()
+        bd.push_san(move)
+        print(bd)
 
 if __name__=="__main__":
-    print(getBoard(chess.Board()))
+    game()
