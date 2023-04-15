@@ -25,7 +25,6 @@ class Node(ABC):
 
 
 class Montycarlo():
-    N=0
     def __init__(self,numberofPlayers,gameNode:Node) -> None:
         self.myNode=gameNode
         self.nplayers=numberofPlayers
@@ -49,13 +48,14 @@ class Montycarlo():
         return True
     
     @staticmethod
-    def ucb(n,v):
+    def ucb(n,v,logN):
         if n==0:
             return inf
-        return v/n+2*sqrt(log(Montycarlo.N)/n)
+        return v/n+2*sqrt(logN/n)
     
     def score_ucb(self,node):
-        return Montycarlo.ucb(node.n,node.v[self.player])
+        logN=log(self.n)
+        return Montycarlo.ucb(node.n,node.v[self.player],logN)
 
 
     def getBestchild(self):
@@ -86,10 +86,6 @@ class Montycarlo():
         
         self.addv(newv)
         return newv
-    
-    def rootsimulate(self):
-        Montycarlo.N+=1
-        self.simulate()
         
 
     
