@@ -1,6 +1,6 @@
 import unittest
 import pandas as pd
-from game_utils import possible_Attacks,createGame,get_recruitment
+from game_utils import possible_Attacks,createGame,get_recruitment,initialize
 
 
 
@@ -34,6 +34,14 @@ class TestGameUtils(unittest.TestCase):
     def test_recruit(self):
         self.assertEqual(get_recruitment(self.exampleSit,self.exampleGame),7)
 
-
+    def test_init(self):
+        for i in range(1):
+            init_sit=initialize(self.exampleGame)
+            print(init_sit["countries"])
+            self.assertEqual(init_sit["countries"]["troups"].sum(),24)
+            
+            countrynumbs=init_sit["countries"].groupby("owner").count()["name"].tolist()
+            countrynumbs=set(countrynumbs)
+            self.assertTrue(countrynumbs=={3,3,2})
 if __name__== '__main__':
     unittest.main()
